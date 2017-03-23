@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  database:
+    image: mongo:3.2
+
+  lila:
+    image: tokland/lila:0.0.2
+    links:
+      - database
+    ports: 
+      - "9663:9663"
+    volumes:
+      - public:/opt/docker/public
+      
+  nginx:
+    image: nginx
+    links:
+      - lila
+    ports: 
+      - "9662:80"
+    volumes:
+      - ./nginx-lila.conf:/etc/nginx/conf.d/nginx-lila.conf
+      #- public:/usr/local/nginx/lila/public
+      - ./public:/usr/local/nginx/lila/public
+      
+volumes:
+  public: {}
