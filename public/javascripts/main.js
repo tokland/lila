@@ -1468,4 +1468,12 @@ lichess.loginOrSignup = function(username, password, email) {
     .done(function() { window.location.reload(); });
 };
 
-console.log("hello1");
+document.addEventListener("DOMContentLoaded", function() {
+  var userLoggedIn = $(".signin.button").length == 0;
+  
+  if (parent.lichessLoaded) {
+    parent.lichessLoaded(lichess, userLoggedIn);
+  }
+}, false);
+
+document.domain = "codelearn.local";

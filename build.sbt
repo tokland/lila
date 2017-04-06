@@ -1,6 +1,6 @@
 import NativePackagerHelper._
 
-version := "0.0.2"
+version := "0.0.3"
 
 packageName in Docker := "lila"
 dockerRepository := Some("tokland")
