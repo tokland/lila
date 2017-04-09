@@ -1,10 +1,5 @@
 import NativePackagerHelper._
 
-version := "0.0.3"
-
-packageName in Docker := "lila"
-dockerRepository := Some("tokland")
-
 javaOptions in Universal ++= Seq(
   "-Dhttp.port=9663",
   "-Dpidfile.path=/dev/null",

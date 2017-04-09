@@ -1443,37 +1443,3 @@ lichess.notifyApp = (function() {
   }
 
 })();
-
-lichess.signup = function(username, password, email) {
-  $.post("/signup", {username: username, password: password, email: email})
-    .fail(function() { alert("Cannot signup"); })
-    .done(function() { window.location.reload(); });
-};
-    
-lichess.login = function(username, password) {
-  $.post("/login", {username: username, password: password})
-    .fail(function() { alert("Cannot login"); })
-    .done(function() { window.location.reload(); });
-};
-
-lichess.logout = function(username, password) {
-  $.get("/logout", {username: username, password: password})
-    .fail(function() { alert("Cannot logout"); })
-    .done(function() { window.location.reload(); });
-};
-
-lichess.loginOrSignup = function(username, password, email) {
-  $.post("/login", {username: username, password: password})
-    .fail(function() { lichess.signup(username, password, email); })
-    .done(function() { window.location.reload(); });
-};
-
-document.addEventListener("DOMContentLoaded", function() {
-  var userLoggedIn = $(".signin.button").length == 0;
-  
-  if (parent.lichessLoaded) {
-    parent.lichessLoaded(lichess, userLoggedIn);
-  }
-}, false);
-
-document.domain = "codelearn.local";

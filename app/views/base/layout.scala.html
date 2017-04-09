@@ -205,6 +205,7 @@ withGtm: Boolean = false)(body: Html)(implicit ctx: Context)
     @jsTag("socket.js")
     @jsTag("main.js")
     }
+    @jsTag("control.js")
     @if(withGtm) { @embedJs { dataLayer = []; } }
     @moreJs
     @if(lang.language != "en") {
